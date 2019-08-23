@@ -87,19 +87,19 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 在线在centos7安装docker  目的 CentOS Linux release 7.5.1804 (Core) docker-ce.x86_64 3:18.09.0-3.el7">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/uname-r.jpg">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/docker_install1.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/docker_install2.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/docker_install3.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/docker_install6.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/docker_install4.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/docker_install5.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/centos7/check_docker.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/uname-r.jpg">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/docker_install1.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/docker_install2.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/docker_install3.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/docker_install6.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/docker_install4.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/docker_install5.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/centos7/check_docker.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7在线安装docker">
 <meta name="twitter:description" content="前言 在线在centos7安装docker  目的 CentOS Linux release 7.5.1804 (Core) docker-ce.x86_64 3:18.09.0-3.el7">
-<meta name="twitter:image" content="https://creambing.github.io/images/docker/centos7/uname-r.jpg">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/docker/centos7/uname-r.jpg">
 
 
 
@@ -419,21 +419,21 @@ docker-ce.x86_64 3:18.09.0-3.el7</p>
 <h1 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h1>
 <p><strong>1.确认系统是否是centos7，内核在3.10以上</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">或者</span><br><span class="line">cat /etc/redhat-release</span><br></pre></td></tr></table></figure>
-<img src="/images/docker/centos7/uname-r.jpg">
+<img src="/blog/images/docker/centos7/uname-r.jpg">
 <p><strong>2.执行如下命令安装</strong><br>
 在root用户下，或者在sudo执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils \</span><br><span class="line">        device-mapper-persistent-data \</span><br><span class="line">        lvm2</span><br><span class="line"></span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">    </span><br><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure>
-<img src="/images/docker/centos7/docker_install1.png">
-<img src="/images/docker/centos7/docker_install2.png">
-<img src="/images/docker/centos7/docker_install3.png">
+<img src="/blog/images/docker/centos7/docker_install1.png">
+<img src="/blog/images/docker/centos7/docker_install2.png">
+<img src="/blog/images/docker/centos7/docker_install3.png">
 <p>在第一次执行安装命令时，无法解析远程仓库，此时用浏览器访问了一下,确认可以访问，于是再次执行，安装成功，这说明这个网站针对国内不够稳定，最后下载的时候确实显示速度也比较慢<br>
 所以这里可以切换成阿里的源 <a href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
-<img src="/images/docker/centos7/docker_install6.png">
-<img src="/images/docker/centos7/docker_install4.png">
-<img src="/images/docker/centos7/docker_install5.png">
+<img src="/blog/images/docker/centos7/docker_install6.png">
+<img src="/blog/images/docker/centos7/docker_install4.png">
+<img src="/blog/images/docker/centos7/docker_install5.png">
 <p><strong>3.启动并验证</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker.service</span><br><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
-<img src="/images/docker/centos7/check_docker.png">
+<img src="/blog/images/docker/centos7/check_docker.png">
 <p><strong>4.centos7以下安装docker的方式</strong></p>
 <blockquote>
 <p>一.什么是epel?<br>
@@ -463,7 +463,7 @@ centos6最后支持的docker版本是1.7.1</p>
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

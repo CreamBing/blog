@@ -87,17 +87,17 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 在有docker环境和docker-compose的工具的机器上，快速搭建redis和mangodb的单机服务  目的 由于我在window上安装了docker,具体教程可看**windows上安装docker-ce**，以下命令都是在windows上操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/docker/softs/redis/redis-up.jpg">
-<meta property="og:image" content="https://creambing.github.io/images/docker/softs/redis/redis-client.jpg">
-<meta property="og:image" content="https://creambing.github.io/images/docker/softs/redis/docker-setting-network.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/softs/redis/route-print.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/softs/redis/linux-redis-up.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/softs/redis/window_redis_network.jpg">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/softs/redis/redis-up.jpg">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/softs/redis/redis-client.jpg">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/softs/redis/docker-setting-network.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/softs/redis/route-print.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/softs/redis/linux-redis-up.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/softs/redis/window_redis_network.jpg">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker安装mangodb和redis">
 <meta name="twitter:description" content="前言 在有docker环境和docker-compose的工具的机器上，快速搭建redis和mangodb的单机服务  目的 由于我在window上安装了docker,具体教程可看**windows上安装docker-ce**，以下命令都是在windows上操作">
-<meta name="twitter:image" content="https://creambing.github.io/images/docker/softs/redis/redis-up.jpg">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/docker/softs/redis/redis-up.jpg">
 
 
 
@@ -411,7 +411,7 @@
         <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
 <p>在有docker环境和docker-compose的工具的机器上，快速搭建redis和mangodb的单机服务</p>
 <h1 id="目的"><a class="markdownIt-Anchor" href="#目的"></a> 目的</h1>
-<p>由于我在window上安装了docker,具体教程可看**<a href="/2018/10/21/windows上安装docker-ce/" title="windows上安装docker-ce">windows上安装docker-ce</a>**，以下命令都是在windows上操作</p>
+<p>由于我在window上安装了docker,具体教程可看**<a href="/blog/2018/10/21/windows上安装docker-ce/" title="windows上安装docker-ce">windows上安装docker-ce</a>**，以下命令都是在windows上操作</p>
 <a id="more"></a>
 <h1 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h1>
 <h2 id="安装redis"><a class="markdownIt-Anchor" href="#安装redis"></a> 安装redis</h2>
@@ -423,19 +423,19 @@
 进入redis.yml文件所在目录执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f redis.yml up -d</span><br></pre></td></tr></table></figure>
 <p>截图如下</p>
-<img src="/images/docker/softs/redis/redis-up.jpg">
+<img src="/blog/images/docker/softs/redis/redis-up.jpg">
 <p>利用redis-client客户端连接(客户端下载地址 <a href="https://redisdesktop.com/download" target="_blank" rel="noopener">https://redisdesktop.com/download</a>)</p>
-<img src="/images/docker/softs/redis/redis-client.jpg">
+<img src="/blog/images/docker/softs/redis/redis-client.jpg">
 <p>这里在window下有个问题，就是我这里重新又定义了一个网络，我发现我不能ping通172.21.0.2这个容器ip，所以只能通过127.0.0.1:16379连接<br>
 不过之前定义的consuls的网络是可以ping通的,后来发现ping通的不是docker中的，而是电信网关连接的其他网络，我们现在将网络改为consuls桥接的网络看看</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.1'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">redis:latest</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="attr">      consuls_static-network:</span></span><br><span class="line"><span class="attr">        ipv4_address:</span> <span class="number">172.20</span><span class="number">.0</span><span class="number">.5</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"16379:6379"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">   consuls_static-network:</span></span><br><span class="line"><span class="attr">     external:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>这里只是展示一下docker-compose使用已有网络的写法，虽然改了能够ping通，但不是这个网络，这个和linux上有差别<br>
 <font color="#eb4d4b">linux上docker新建桥接网络，是可以互通的，但是windows上不行</font><br>
 我注意到docker 的setting中有network这个选项</p>
-<img src="/images/docker/softs/redis/docker-setting-network.png">
+<img src="/blog/images/docker/softs/redis/docker-setting-network.png">
 <p>然后我们查看一下window的路由链路</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route print</span><br></pre></td></tr></table></figure>
-<img src="/images/docker/softs/redis/route-print.png">
+<img src="/blog/images/docker/softs/redis/route-print.png">
 <p>这里我们发现10.0.75.0/24的子网的网关为10.0.75.1和docker setting配置一样，正好对上了，但是并没有172.20.0.5的子网，虽然docker中已经有了，这也正说明windows上的docker和linux上的docker不一样，因为linux上只要新建了网络，就有链路了<br>
 所以我们这里新建一个匹配的桥接网络</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network  create  -d bridge --subnet=10.0.75.0/24 --gateway=10.0.75.1 usable_net</span><br></pre></td></tr></table></figure>
@@ -443,12 +443,12 @@
 <p>结果我发现这样做之后redis都连接不上了，于是还原回去利用最开始的方法，自己自定义网络，<br>
 但是我们发现我们自定义的网络中连网关都没有<br>
 <font color="#2ecc71" size="4"><i class="fa fa-spinner fa-spin"></i>扩展</font><br>
-这部分是在Linux作为宿主机的测试，<strong><a href="/2018/11/30/centos7在线安装docker/" title="centos7在线安装docker">centos7在线安装docker</a></strong> + <strong><a href="/2018/09/10/linux上安装docker-compose/" title="linux上安装docker-compose">linux上安装docker-compose</a></strong>(centos7.5+docker18.09+docker-composev1.22.0)</p>
-<img src="/images/docker/softs/redis/linux-redis-up.png">
+这部分是在Linux作为宿主机的测试，<strong><a href="/blog/2018/11/30/centos7在线安装docker/" title="centos7在线安装docker">centos7在线安装docker</a></strong> + <strong><a href="/blog/2018/09/10/linux上安装docker-compose/" title="linux上安装docker-compose">linux上安装docker-compose</a></strong>(centos7.5+docker18.09+docker-composev1.22.0)</p>
+<img src="/blog/images/docker/softs/redis/linux-redis-up.png">
 <p>因为可以ping通，所以我在linux宿主机上既可以通过本地的16379也可以用docker的ip(172.21.0.2)+6379访问，但是在windows上我只能用16379,因为docker机器我无法ping通<br>
 <font color="#eb4d4b">这里遗留了两个问题:</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">windows上network配置有什么用？</span><br><span class="line">为什么windows作为宿主机无法ping通自定义桥接网络的容器ip?</span><br></pre></td></tr></table></figure>
-<img src="/images/docker/softs/redis/window_redis_network.jpg">
+<img src="/blog/images/docker/softs/redis/window_redis_network.jpg">
 <p>但是我们还是无法ping通，我们手动添加路由试试</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route add 192.172.0.0 mask 255.255.0.0 192.168.5.105</span><br></pre></td></tr></table></figure>
 <p><a href="https://download.studio3t.com/studio-3t/windows/2018.5.1/studio-3t-x64.zip" target="_blank" rel="noopener">https://download.studio3t.com/studio-3t/windows/2018.5.1/studio-3t-x64.zip</a></p>
@@ -465,7 +465,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

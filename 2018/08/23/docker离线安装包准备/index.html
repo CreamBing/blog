@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 在一台有网络的centos上准备docker-ce.18离线安装包,然后可以根据**docker离线安装**这篇博客离线安装docker 下面的操作都是在有网络的centos7上进行操作的  目的 为离线安装docker提供相关依赖和程序包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/docker/aliyumrepo.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/yum_install_yumutils.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/repotrack.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/aliyumrepo.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/yum_install_yumutils.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/repotrack.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker离线安装包准备">
 <meta name="twitter:description" content="前言 在一台有网络的centos上准备docker-ce.18离线安装包,然后可以根据**docker离线安装**这篇博客离线安装docker 下面的操作都是在有网络的centos7上进行操作的  目的 为离线安装docker提供相关依赖和程序包">
-<meta name="twitter:image" content="https://creambing.github.io/images/docker/aliyumrepo.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/docker/aliyumrepo.png">
 
 
 
@@ -395,7 +395,7 @@
 
       
         <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
-<p>在一台有网络的centos上准备docker-ce.18离线安装包,然后可以根据**<a href="/2018/08/21/docker离线安装/" title="docker离线安装">docker离线安装</a>**这篇博客离线安装docker<br>
+<p>在一台有网络的centos上准备docker-ce.18离线安装包,然后可以根据**<a href="/blog/2018/08/21/docker离线安装/" title="docker离线安装">docker离线安装</a>**这篇博客离线安装docker<br>
 <em><strong>下面的操作都是在有网络的centos7上进行操作的</strong></em></p>
 <h1 id="目的"><a class="markdownIt-Anchor" href="#目的"></a> 目的</h1>
 <p>为离线安装docker提供相关依赖和程序包</p>
@@ -411,16 +411,16 @@
 <p>下载阿里的镜像源并应用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
 <p>截图:</p>
-<img src="/images/docker/aliyumrepo.png">
+<img src="/blog/images/docker/aliyumrepo.png">
 <h2 id="下载createrepo软件包及其依赖"><a class="markdownIt-Anchor" href="#下载createrepo软件包及其依赖"></a> 下载createrepo软件包及其依赖</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repotrack -a x86_64 -p /apps/docker/packages createrepo</span><br></pre></td></tr></table></figure>
 <p>如果上诉指令不存在,先安装yum-utils</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
 <p>截图:</p>
-<img src="/images/docker/yum_install_yumutils.png">
+<img src="/blog/images/docker/yum_install_yumutils.png">
 <p>再次执行repotrack上面那个指令,开始下载依赖包<br>
 截图:</p>
-<img src="/images/docker/repotrack.png">
+<img src="/blog/images/docker/repotrack.png">
 <p>下载libgudev1和systemd-sysv，是因为centos7.2的libgudev1和systemd-sysv依赖systemd-219-19.el7.x86_64，<br>
 而docker-ce需要systemd-219-30el7.x86_64.下载 libgudev1和systemd-sysv软件包机器依赖</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repotrack -a x86_64 -p /apps/docker/packages libgudev1</span><br><span class="line">repotrack -a x86_64 -p /apps/docker/packages systemd-sysv</span><br></pre></td></tr></table></figure>
@@ -443,7 +443,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

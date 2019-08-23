@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 虚拟机装了个CentOS7，使用的NAT的网络模式，为了防止再次启动系统的时候网络IP发生变化，因此设置静态IP和DNS  目的 使虚拟机中的centos7在重启后ip不变">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/op/centos7/centos7_mini.png">
-<meta property="og:image" content="https://creambing.github.io/images/op/centos7/editor_ens33.png">
-<meta property="og:image" content="https://creambing.github.io/images/op/centos7/net_gateway.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/op/centos7/centos7_mini.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/op/centos7/editor_ens33.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/op/centos7/net_gateway.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7最小化安装设置固定ip">
 <meta name="twitter:description" content="前言 虚拟机装了个CentOS7，使用的NAT的网络模式，为了防止再次启动系统的时候网络IP发生变化，因此设置静态IP和DNS  目的 使虚拟机中的centos7在重启后ip不变">
-<meta name="twitter:image" content="https://creambing.github.io/images/op/centos7/centos7_mini.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/op/centos7/centos7_mini.png">
 
 
 
@@ -404,15 +404,15 @@
 <p>由于CentOS是最小化安装，没有ifconfig命令，因此可以采用ip命令查看。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
 <p>📷截图</p>
-<img src="/images/op/centos7/centos7_mini.png">
+<img src="/blog/images/op/centos7/centos7_mini.png">
 <p>我们发现 lo 是回环地址,另一个 ens33 就是就是我们要修改的文件</p>
 <h4 id="2vi修改文件"><a class="markdownIt-Anchor" href="#2vi修改文件"></a> 2.vi修改文件</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-*</span><br></pre></td></tr></table></figure>
 <p>📷截图</p>
-<img src="/images/op/centos7/editor_ens33.png">
+<img src="/blog/images/op/centos7/editor_ens33.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=static #dhcp改为static（修改）</span><br><span class="line">ONBOOT=yes #开机启用本配置，一般在最后一行（修改）</span><br><span class="line">IPADDR=192.168.1.204 #静态IP（增加）</span><br><span class="line">GATEWAY=192.168.1.2 #默认网关，虚拟机安装的话，通常是2，也就是VMnet8的网关设置,（增加）</span><br><span class="line">NETMASK=255.255.255.0 #子网掩码（增加）</span><br><span class="line">DNS1=192.168.1.2 #DNS 配置，虚拟机安装的话，DNS就网关就行，多个DNS网址的话再增加（增加）</span><br></pre></td></tr></table></figure>
 <p>📷截图</p>
-<img src="/images/op/centos7/net_gateway.png">
+<img src="/blog/images/op/centos7/net_gateway.png">
 <h4 id="3重启网络服务"><a class="markdownIt-Anchor" href="#3重启网络服务"></a> 3.重启网络服务</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
 <h4 id="4检查网络"><a class="markdownIt-Anchor" href="#4检查网络"></a> 4.检查网络</h4>
@@ -428,7 +428,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="docker,迁移,镜像,">
+  <meta name="keywords" content="docker,镜像,迁移,">
 
 
 
@@ -80,21 +80,21 @@
 
 
 <meta name="description" content="前言 一般正规的做法应该是将自己做好的镜像push到远程仓库去,然后需要的时候从远处仓库拉取.由于目前我还没有建立私有远程仓库 所以这篇博客主要是讲手动导出镜像的方法  目的 手动导出镜像以便于在其他地方使用">
-<meta name="keywords" content="docker,迁移,镜像">
+<meta name="keywords" content="docker,镜像,迁移">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker镜像迁移">
 <meta property="og:url" content="https://creambing.github.io/blog/2018/08/24/docker镜像迁移/index.html">
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 一般正规的做法应该是将自己做好的镜像push到远程仓库去,然后需要的时候从远处仓库拉取.由于目前我还没有建立私有远程仓库 所以这篇博客主要是讲手动导出镜像的方法  目的 手动导出镜像以便于在其他地方使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/docker/docker_save.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/docker_load.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/docker_load_success.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/docker_save.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/docker_load.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/docker_load_success.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker镜像迁移">
 <meta name="twitter:description" content="前言 一般正规的做法应该是将自己做好的镜像push到远程仓库去,然后需要的时候从远处仓库拉取.由于目前我还没有建立私有远程仓库 所以这篇博客主要是讲手动导出镜像的方法  目的 手动导出镜像以便于在其他地方使用">
-<meta name="twitter:image" content="https://creambing.github.io/images/docker/docker_save.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/docker/docker_save.png">
 
 
 
@@ -408,13 +408,13 @@
 或者  <em><strong>docker save image_id &gt; 自定义导出名字.tar</strong></em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save webapi:0814 &gt; webapi0814.tar</span><br></pre></td></tr></table></figure>
 <p>截图:</p>
-<img src="/images/docker/docker_save.png">
+<img src="/blog/images/docker/docker_save.png">
 <h2 id="load导入镜像"><a class="markdownIt-Anchor" href="#load导入镜像"></a> load导入镜像</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -qi webapi0814.tar</span><br></pre></td></tr></table></figure>
 <p>截图:</p>
-<img src="/images/docker/docker_load.png">
+<img src="/blog/images/docker/docker_load.png">
 <p>验证:</p>
-<img src="/images/docker/docker_load_success.png">
+<img src="/blog/images/docker/docker_load_success.png">
 <p>docker images 查看一下导入情况,这里说明一下,如果之前指令是通过save imageid导出的镜像的话,这里导入的时候仓库和标签名可能为空,推荐save repository:tag导出</p>
 
       
@@ -426,7 +426,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 
@@ -461,9 +461,9 @@
           
             <a href="/blog/tags/docker/" rel="tag"># docker</a>
           
-            <a href="/blog/tags/迁移/" rel="tag"># 迁移</a>
-          
             <a href="/blog/tags/镜像/" rel="tag"># 镜像</a>
+          
+            <a href="/blog/tags/迁移/" rel="tag"># 迁移</a>
           
         </div>
       

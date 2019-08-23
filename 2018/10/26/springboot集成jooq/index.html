@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 说明一下springboot2.0.6.RELEASE集成jooq3.10.8以及jooq-codegen-maven3.10.8  目的 简单说明一下jooq的集成和用法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/java/springboot2/jooq/dir_jooq_mavn.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springboot2/jooq/dir_jooq_mavn.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springboot集成jooq">
 <meta name="twitter:description" content="前言 说明一下springboot2.0.6.RELEASE集成jooq3.10.8以及jooq-codegen-maven3.10.8  目的 简单说明一下jooq的集成和用法">
-<meta name="twitter:image" content="https://creambing.github.io/images/java/springboot2/jooq/dir_jooq_mavn.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/java/springboot2/jooq/dir_jooq_mavn.png">
 
 
 
@@ -410,7 +410,7 @@
 <a id="more"></a>
 <h1 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h1>
 <h2 id="初始化工程"><a class="markdownIt-Anchor" href="#初始化工程"></a> 初始化工程</h2>
-<p>idea初始化工程方法可以参见**<a href="/2018/10/26/springcloud编写用户微服务/" title="springcloud编写用户微服务">springcloud编写用户微服务</a>**</p>
+<p>idea初始化工程方法可以参见**<a href="/blog/2018/10/26/springcloud编写用户微服务/" title="springcloud编写用户微服务">springcloud编写用户微服务</a>**</p>
 <h2 id="h2"><a class="markdownIt-Anchor" href="#h2"></a> h2</h2>
 <p>以h2为梨子说明一下<br>
 <strong>添加依赖</strong></p>
@@ -433,14 +433,14 @@
 <p>需要改成文件类型</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- JDBC connection parameters --&gt;</span><br><span class="line">&lt;jdbc&gt;</span><br><span class="line">    &lt;driver&gt;org.h2.Driver&lt;/driver&gt;</span><br><span class="line">    &lt;url&gt;jdbc:h2:~/testmovie&lt;/url&gt;</span><br><span class="line">    &lt;user&gt;sa&lt;/user&gt;</span><br><span class="line">    &lt;password&gt;123456&lt;/password&gt;</span><br><span class="line">&lt;/jdbc&gt;</span><br></pre></td></tr></table></figure>
 <p>jooq-codegen-maven以上配置生成的目录结构如下</p>
-<img src="/images/java/springboot2/jooq/dir_jooq_mavn.png">
+<img src="/blog/images/java/springboot2/jooq/dir_jooq_mavn.png">
 <p><strong>yml配置文件添加相关配置</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  datasource:</span><br><span class="line">    #url: jdbc:h2:mem:test</span><br><span class="line">    #url: jdbc:h2:file:~/.h2/testdb</span><br><span class="line">    url: jdbc:h2:~/testuser</span><br><span class="line">    driverClassName: org.h2.Driver</span><br><span class="line">    username: sa</span><br><span class="line">    password: 123456</span><br><span class="line">    platform: h2</span><br><span class="line">    schema: classpath:db/schema.sql</span><br><span class="line">    data: classpath:db/data.sql</span><br><span class="line">    initialization-mode: always #springboot2.0加上上述sql才会执行</span><br><span class="line">    # 下面为druid连接池的补充设置，应用到上面所有数据源中</span><br><span class="line">    # 初始化大小，最小，最大</span><br><span class="line">    initialSize: 1</span><br><span class="line">    minIdle: 3</span><br><span class="line">    maxActive: 20</span><br><span class="line">    # 配置获取连接等待超时的时间</span><br><span class="line">    maxWait: 60000</span><br><span class="line">    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒</span><br><span class="line">    timeBetweenEvictionRunsMillis: 60000</span><br><span class="line">    # 配置一个连接在池中最小生存的时间，单位是毫秒</span><br><span class="line">    minEvictableIdleTimeMillis: 30000</span><br><span class="line">    validationQuery: select &apos;x&apos;</span><br><span class="line">    testWhileIdle: true</span><br><span class="line">    testOnBorrow: false</span><br><span class="line">    testOnReturn: false</span><br><span class="line">    # 打开PSCache，并且指定每个连接上PSCache的大小</span><br><span class="line">    poolPreparedStatements: true</span><br><span class="line">    maxPoolPreparedStatementPerConnectionSize: 20</span><br><span class="line">    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计</span><br><span class="line">    filters: stat</span><br><span class="line">    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span><br><span class="line">    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span><br><span class="line">    # 合并多个DruidDataSource的监控数据</span><br><span class="line">    useGlobalDataSourceStat: true </span><br><span class="line">  h2:</span><br><span class="line">    console:</span><br><span class="line">      settings:</span><br><span class="line">        web-allow-others: true #进行该配置后，h2 web consloe就可以在远程访问了。否则只能在本机访问。</span><br><span class="line">      path: /h2-console #进行该配置，你就可以通过YOUR_URL/h2-console访问h2 web consloe。YOUR_URL是你程序的访问URl。</span><br><span class="line">      enabled: true #进行该配置，程序开启时就会启动h2 web consloe。当然这是默认的，如果你不想在启动程序时启动h2 web consloe，那么就设置为false。</span><br></pre></td></tr></table></figure>
 <p><font color="#2ecc71" size="4"><i class="fa fa-spinner fa-spin"></i>扩展</font><br>
 1.上面的配置中添加initialization-mode之后才会初始化schema.sql和data.sql<br>
 2.initialization-mode配置之后的是druid的补充配置，需结合java程序手动初始化或者添加spring.datasource.type=com.alibaba.druid.pool.DruidDataSource自动初始化，不过这种初始化之前我的druid监控页面无法打开<br>
 3.h2的控制页面配置如上，如果不加无法访问<br>
-4.集成druid,详情见**<a href="/2018/10/26/springboot集成druid/" title="springboot集成druid">springboot集成druid</a>**</p>
+4.集成druid,详情见**<a href="/blog/2018/10/26/springboot集成druid/" title="springboot集成druid">springboot集成druid</a>**</p>
 <h1 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h1>
 <a href="http://www.jooq.org/javadoc/latest/overview-summary.html" target="_blank" rel="noopener">java api doc</a>
 <a href="https://www.jianshu.com/p/bb558aa56191" target="_blank" rel="noopener">jooq-codegen-maven其他配置</a>
@@ -455,7 +455,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

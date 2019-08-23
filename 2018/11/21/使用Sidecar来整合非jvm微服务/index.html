@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 由于语言多样，系统复杂，有时候一个健壮的系统可能是由多种语言组成的，针对一个非jvm的接口平台，我们可以利用sidecar整合进来  目的 利用zuul可以调用已经注册到注册中心的服务，利用sidecar调用非jvm的服务，这样就可以对外提供一个整合了jvm和非jvm的网关服务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/sidecar/plugins-nodejs.png">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/sidecar/build-node.jpg">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/sidecar/node-health.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/sidecar/plugins-nodejs.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/sidecar/build-node.jpg">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/sidecar/node-health.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Sidecar来整合非jvm微服务">
 <meta name="twitter:description" content="前言 由于语言多样，系统复杂，有时候一个健壮的系统可能是由多种语言组成的，针对一个非jvm的接口平台，我们可以利用sidecar整合进来  目的 利用zuul可以调用已经注册到注册中心的服务，利用sidecar调用非jvm的服务，这样就可以对外提供一个整合了jvm和非jvm的网关服务">
-<meta name="twitter:image" content="https://creambing.github.io/images/java/springcloud/consul/sidecar/plugins-nodejs.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/sidecar/plugins-nodejs.png">
 
 
 
@@ -413,15 +413,15 @@
 <h1 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h1>
 <h2 id="利用idea新建一个node项目"><a class="markdownIt-Anchor" href="#利用idea新建一个node项目"></a> 利用idea新建一个node项目</h2>
 <p>在idea中新建一个node工程，没有的话，先添加nodejs插件</p>
-<img src="/images/java/springcloud/consul/sidecar/plugins-nodejs.png">
-<img src="/images/java/springcloud/consul/sidecar/build-node.jpg">
+<img src="/blog/images/java/springcloud/consul/sidecar/plugins-nodejs.png">
+<img src="/blog/images/java/springcloud/consul/sidecar/build-node.jpg">
 <h2 id="编写node项目添加health端点"><a class="markdownIt-Anchor" href="#编写node项目添加health端点"></a> 编写node项目，添加health端点</h2>
 <p>在app.js中添加</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> healthRouter = <span class="built_in">require</span>(<span class="string">'./routes/health'</span>);</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/health'</span>, healthRouter);</span><br></pre></td></tr></table></figure>
 <p>在routes中添加health.js中添加如下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* GET users listing. */</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="built_in">JSON</span>.stringify(&#123;<span class="string">"status"</span>:<span class="string">"UP"</span>&#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
 <p>访问http://localhost:3000/health显示</p>
-<img src="/images/java/springcloud/consul/sidecar/node-health.png">
+<img src="/blog/images/java/springcloud/consul/sidecar/node-health.png">
 <h2 id="编写java-sidecar整合这个node服务"><a class="markdownIt-Anchor" href="#编写java-sidecar整合这个node服务"></a> 编写java sidecar整合这个node服务</h2>
 <h1 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h1>
 
@@ -434,7 +434,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

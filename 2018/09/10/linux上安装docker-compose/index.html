@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 linux上安装docker-compose,为了在安装了docker的机器上更加方便的编排容器  目的 利用docker-compose快速编排docker容器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/docker/docker-compose-success.png">
-<meta property="og:image" content="https://creambing.github.io/images/docker/docker-compose.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/docker-compose-success.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/docker/docker-compose.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux上安装docker-compose">
 <meta name="twitter:description" content="前言 linux上安装docker-compose,为了在安装了docker的机器上更加方便的编排容器  目的 利用docker-compose快速编排docker容器">
-<meta name="twitter:image" content="https://creambing.github.io/images/docker/docker-compose-success.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/docker/docker-compose-success.png">
 
 
 
@@ -410,10 +410,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mv docker-compose-Linux-x86_64 docker-compose</span><br><span class="line">mkdir -p /apps/softs/docker_compose/</span><br><span class="line">cd /apps/softs/docker_compose/</span><br><span class="line">cp /dev/zkandkafka/docker-compose /apps/softs/docker_compose/</span><br><span class="line">chmod +x docker-compose</span><br><span class="line">修改环境变量</span><br><span class="line">vi /etc/profile</span><br><span class="line">DOCKER_COMPOSE_HOME=/apps/softs/docker_compose/</span><br><span class="line">PATH=$PATH:$DOCKER_COMPOSE_HOME</span><br><span class="line">export PATH</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 <h2 id="验证"><a class="markdownIt-Anchor" href="#验证"></a> 验证</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -v</span><br></pre></td></tr></table></figure>
-<img src="/images/docker/docker-compose-success.png">
+<img src="/blog/images/docker/docker-compose-success.png">
 <h2 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h2>
 <p>docker-compose版本</p>
-<img src="/images/docker/docker-compose.png">
+<img src="/blog/images/docker/docker-compose.png">
       
     </div>
     
@@ -423,7 +423,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

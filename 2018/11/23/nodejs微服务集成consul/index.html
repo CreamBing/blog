@@ -87,18 +87,18 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 **使用Sidecar来整合非jvm微服务**这篇文章讲解了非jvm集成到springcloud体系中的方法 需要说明的是上述方法是用Netflix的sidecar,然而它依赖Eureka作为服务发现组件，consul有自己的注册接口  目的 利用consul的http api将nodejs微服务注册到consul中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/node/node3.png">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/node/check-health1.png">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/node/check-health2.png">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/node/node1.png">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/node/node2.png">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/node/node4.jpg">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/node/check-health3.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/node3.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/check-health1.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/check-health2.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/node1.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/node2.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/node4.jpg">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/check-health3.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs微服务集成consul">
 <meta name="twitter:description" content="前言 **使用Sidecar来整合非jvm微服务**这篇文章讲解了非jvm集成到springcloud体系中的方法 需要说明的是上述方法是用Netflix的sidecar,然而它依赖Eureka作为服务发现组件，consul有自己的注册接口  目的 利用consul的http api将nodejs微服务注册到consul中">
-<meta name="twitter:image" content="https://creambing.github.io/images/java/springcloud/consul/node/node3.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/node/node3.png">
 
 
 
@@ -399,7 +399,7 @@
 
       
         <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
-<p>**<a href="/2018/11/21/使用Sidecar来整合非jvm微服务/" title="使用Sidecar来整合非jvm微服务">使用Sidecar来整合非jvm微服务</a>**这篇文章讲解了非jvm集成到springcloud体系中的方法<br>
+<p>**<a href="/blog/2018/11/21/使用Sidecar来整合非jvm微服务/" title="使用Sidecar来整合非jvm微服务">使用Sidecar来整合非jvm微服务</a>**这篇文章讲解了非jvm集成到springcloud体系中的方法<br>
 <font color="#eb4d4b">需要说明的是上述方法是用Netflix的sidecar,然而它依赖Eureka作为服务发现组件，consul有自己的注册接口</font></p>
 <h1 id="目的"><a class="markdownIt-Anchor" href="#目的"></a> 目的</h1>
 <p>利用consul的http api将nodejs微服务注册到consul中</p>
@@ -419,25 +419,25 @@
 <p>这样在项目启动和结束就会触发相应的注册和注销操作<br>
 由于我现在的consul服务器端版本是1.3.0，这个js版本的consul客户端版本是0.27.0，其中注销时报错405，get方法不被允许<br>
 需要修改consul源码包中service.js中注销逻辑中get方法为put方法，和注册一样</p>
-<img src="/images/java/springcloud/consul/node/node3.png">
+<img src="/blog/images/java/springcloud/consul/node/node3.png">
 <p>我们对比一下js版本的consul客户端和java版本的客户端(spring-cloud-starter-consul-discovery),在服务发现的功能上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">js实现了服务注册和注销，但是还没有健康检查，如果注销失败会出现下面截图中出现的事情，服务在consul上依然存在并且正常</span><br><span class="line">java实现了服务注册和健康检查，并没有服务注销(不知道是不是我没有配置)</span><br></pre></td></tr></table></figure>
 <p>其实node-consul是支持健康检查的，只不过consul-sdk不支持，但它是依赖node-consul来做的，我们把consul-sdk源码修改一下<br>
 其实consul-sdk是对consul的一层封装，作者用es5写的，可以借鉴思路自己改写</p>
-<img src="/images/java/springcloud/consul/node/check-health1.png">
+<img src="/blog/images/java/springcloud/consul/node/check-health1.png">
 <p>同时配置文件添加上面那一段check.</p>
-<img src="/images/java/springcloud/consul/node/check-health2.png">
-<p>下面我们在我们之前实现的网关服务中**<a href="/2018/10/30/springcloud使用zuul聚合微服务/" title="springcloud使用zuul聚合微服务">springcloud使用zuul聚合微服务</a>**添加代码来调用一下node中的相关服务<br>
+<img src="/blog/images/java/springcloud/consul/node/check-health2.png">
+<p>下面我们在我们之前实现的网关服务中**<a href="/blog/2018/10/30/springcloud使用zuul聚合微服务/" title="springcloud使用zuul聚合微服务">springcloud使用zuul聚合微服务</a>**添加代码来调用一下node中的相关服务<br>
 添加服务类和控制类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NodeRibbonService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"fallback"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHealthInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> restTemplate.getForObject(<span class="string">"http://node-service/health"</span>, String.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">fallback</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"node-service /health 报错:"</span>+throwable);</span><br><span class="line">        Map&lt;String, Object&gt; map = Maps.newHashMap();</span><br><span class="line">        map.put(<span class="string">"status"</span>, <span class="string">"unkown"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Gson().toJson(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/un"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAndNodeController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserRibbonService userRibbonService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    NodeRibbonService nodeRibbonService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/getUserAndNodeHealth"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getUserAndNodeHealth</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;User&gt; users = userRibbonService.getAllUsers1();</span><br><span class="line">        String s = nodeRibbonService.getHealthInfo();</span><br><span class="line">        Map&lt;String, Object&gt; map = Maps.newHashMap();</span><br><span class="line">        map.put(<span class="string">"users"</span>,users);</span><br><span class="line">        map.put(<span class="string">"node"</span>,s);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>调用接口http://localhost:1051/un/getUserAndNodeHealth</p>
-<img src="/images/java/springcloud/consul/node/node1.png">
+<img src="/blog/images/java/springcloud/consul/node/node1.png">
 <p>关掉node服务，但是没有在consul上注销并且consul上显示node服务正常</p>
-<img src="/images/java/springcloud/consul/node/node2.png">
+<img src="/blog/images/java/springcloud/consul/node/node2.png">
 <p>利用上面修改源码程序退出成功在consul上注销后再调用</p>
-<img src="/images/java/springcloud/consul/node/node4.jpg">
+<img src="/blog/images/java/springcloud/consul/node/node4.jpg">
 <p>关掉node程序，增加健康检查后，但是在consul上不注销，此时consul上显示node服务不健康，调用该接口直接走hytrix,和java类似</p>
-<img src="/images/java/springcloud/consul/node/check-health3.png">
+<img src="/blog/images/java/springcloud/consul/node/check-health3.png">
 <h1 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h1>
 <p>1.js版本的consul客户端 [<a href="https://github.com/silas/node-consul#agent-service-register" target="_blank" rel="noopener">https://github.com/silas/node-consul#agent-service-register</a>]<br>
 2.Consul-SDK博客地址 [<a href="http://www.moye.me/2016/10/26/node-consul-sdk/" target="_blank" rel="noopener">http://www.moye.me/2016/10/26/node-consul-sdk/</a>]<br>
@@ -453,7 +453,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

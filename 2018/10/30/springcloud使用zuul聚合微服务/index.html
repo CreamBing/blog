@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="技术之路">
 <meta property="og:description" content="前言 1.springcloud编写用户微服务 2.springcloud编写电影微服务 3.springcloud集成网关ZUUL 依上面教程，我已经实现了用户，电影微服务以及zuul网关，微服务的设计难点之一在于对原有业务的拆分， 在我看来每个微服务职责要尽可能单一，但是这样同样也带来了一个问题，那就是微服务之间不可避免的一 些交集.例如终端需要查询用户信息和电影信息，这里有两种做法 1.让">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/zuul/zuul-um.png">
-<meta property="og:image" content="https://creambing.github.io/images/java/springcloud/consul/zuul/zuul_rxjava_hystrix_failed.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/zuul/zuul-um.png">
+<meta property="og:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/zuul/zuul_rxjava_hystrix_failed.png">
 <meta property="og:updated_time" content="2019-08-13T11:40:48.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springcloud使用zuul聚合微服务">
 <meta name="twitter:description" content="前言 1.springcloud编写用户微服务 2.springcloud编写电影微服务 3.springcloud集成网关ZUUL 依上面教程，我已经实现了用户，电影微服务以及zuul网关，微服务的设计难点之一在于对原有业务的拆分， 在我看来每个微服务职责要尽可能单一，但是这样同样也带来了一个问题，那就是微服务之间不可避免的一 些交集.例如终端需要查询用户信息和电影信息，这里有两种做法 1.让">
-<meta name="twitter:image" content="https://creambing.github.io/images/java/springcloud/consul/zuul/zuul-um.png">
+<meta name="twitter:image" content="https://creambing.github.io/blog/images/java/springcloud/consul/zuul/zuul-um.png">
 
 
 
@@ -416,9 +416,9 @@
 
       
         <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
-<p>1.<strong><a href="/2018/10/26/springcloud编写用户微服务/" title="springcloud编写用户微服务">springcloud编写用户微服务</a></strong><br>
-2.<strong><a href="/2018/10/30/springcloud编写电影微服务/" title="springcloud编写电影微服务">springcloud编写电影微服务</a></strong><br>
-3.<strong><a href="/2018/10/29/springcloud集成网关ZUUL/" title="springcloud集成网关ZUUL">springcloud集成网关ZUUL</a></strong><br>
+<p>1.<strong><a href="/blog/2018/10/26/springcloud编写用户微服务/" title="springcloud编写用户微服务">springcloud编写用户微服务</a></strong><br>
+2.<strong><a href="/blog/2018/10/30/springcloud编写电影微服务/" title="springcloud编写电影微服务">springcloud编写电影微服务</a></strong><br>
+3.<strong><a href="/blog/2018/10/29/springcloud集成网关ZUUL/" title="springcloud集成网关ZUUL">springcloud集成网关ZUUL</a></strong><br>
 依上面教程，我已经实现了用户，电影微服务以及zuul网关，微服务的设计难点之一在于对原有业务的拆分，<br>
 在我看来每个微服务职责要尽可能单一，但是这样同样也带来了一个问题，那就是微服务之间不可避免的一<br>
 些交集.例如终端需要查询用户信息和电影信息，这里有两种做法<br>
@@ -431,13 +431,13 @@
 <a id="more"></a>
 <h1 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h1>
 <h2 id="工程初始化"><a class="markdownIt-Anchor" href="#工程初始化"></a> 工程初始化</h2>
-<p>可以参见这篇博客**<a href="/2018/10/29/springcloud集成网关ZUUL/" title="springcloud集成网关ZUUL">springcloud集成网关ZUUL</a>**<br>
+<p>可以参见这篇博客**<a href="/blog/2018/10/29/springcloud集成网关ZUUL/" title="springcloud集成网关ZUUL">springcloud集成网关ZUUL</a>**<br>
 验证:<br>
 <a href="http://localhost:1051/api/user/user/getAll" target="_blank" rel="noopener">http://localhost:1051/api/user/user/getAll</a><br>
 <a href="http://localhost:1051/api/movie/movie/findOneById?id=2" target="_blank" rel="noopener">http://localhost:1051/api/movie/movie/findOneById?id=2</a></p>
-<img src="/images/java/springcloud/consul/zuul/zuul-um.png">
+<img src="/blog/images/java/springcloud/consul/zuul/zuul-um.png">
 <h2 id="集成feign添加用户和电影的消费端"><a class="markdownIt-Anchor" href="#集成feign添加用户和电影的消费端"></a> 集成feign,添加用户和电影的消费端</h2>
-<p>可以参见这篇博客**<a href="/2018/10/29/springcloud集成feign/" title="springcloud集成feign">springcloud集成feign</a>**<br>
+<p>可以参见这篇博客**<a href="/blog/2018/10/29/springcloud集成feign/" title="springcloud集成feign">springcloud集成feign</a>**<br>
 仿照user创建movie的feign客户端</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@FeignClient(name = &quot;consul-movie&quot;)</span><br><span class="line">public interface MovieFeignClient &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/movie/findOneById&quot;,method = RequestMethod.GET)</span><br><span class="line">    Movie findOneById(@RequestParam(&quot;id&quot;) Long id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">错误的写法</span><br><span class="line">@FeignClient(name = &quot;consul-movie&quot;)</span><br><span class="line">public interface MovieFeignClient &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/movie/findOneById&quot;,method = RequestMethod.GET)</span><br><span class="line">    Movie findOneById(Long id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>get多参数写法</p>
@@ -445,7 +445,7 @@
 <p><font color="#2ecc71" size="4"><i class="fa fa-spinner fa-spin"></i>扩展</font><br>
 <font color="#eb4d4b">20181031更新:zuul上的service中添加hystrix回退并没有执行，如下图，想着service中利用的是<br>
 feign实现的，所以给feign加上回退，需要在配置上加上feign.hystrix.enabled=true</font></p>
-<img src="/images/java/springcloud/consul/zuul/zuul_rxjava_hystrix_failed.png">
+<img src="/blog/images/java/springcloud/consul/zuul/zuul_rxjava_hystrix_failed.png">
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"consul-movie"</span>,fallback = MovieFeignClient.MovieFeignClientFallBack.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MovieFeignClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/movie/findOneById"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="function">Movie <span class="title">findOneById</span><span class="params">(@RequestParam(<span class="string">"id"</span>)</span> Long id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Component</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MovieFeignClientFallBack</span> <span class="keyword">implements</span> <span class="title">MovieFeignClient</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Movie <span class="title">findOneById</span><span class="params">(Long id)</span> </span>&#123;</span><br><span class="line">            Movie movie = <span class="keyword">new</span> Movie();</span><br><span class="line">            movie.setId(-<span class="number">1L</span>);</span><br><span class="line">            <span class="keyword">return</span> movie;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//加上日志的版本</span></span><br><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"consul-movie"</span>,fallbackFactory = MovieFeignClient.MovieFeignClientFallBackFactory.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MovieFeignClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/movie/findOneById"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="function">Movie <span class="title">findOneById</span><span class="params">(@RequestParam(<span class="string">"id"</span>)</span> Long id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Component</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MovieFeignClientFallBackFactory</span> <span class="keyword">implements</span> <span class="title">FallbackFactory</span>&lt;<span class="title">MovieFeignClient</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(MovieFeignClientFallBackFactory.class);</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> MovieFeignClient <span class="title">create</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MovieFeignClient() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Movie <span class="title">findOneById</span><span class="params">(Long id)</span> </span>&#123;</span><br><span class="line">                    LOGGER.error(<span class="string">"MovieFeignClient findOneById fallback;reason was:[&#123;&#125;]"</span>,throwable);</span><br><span class="line">                    Movie movie = <span class="keyword">new</span> Movie();</span><br><span class="line">                    movie.setId(-<span class="number">1L</span>);</span><br><span class="line">                    <span class="keyword">return</span> movie;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="集成ribbon"><a class="markdownIt-Anchor" href="#集成ribbon"></a> 集成ribbon</h2>
 <p>添加一个配置类java</p>
@@ -472,7 +472,7 @@ ribbon <a href="http://localhost:1051/um/getUserAndMovieUseRibbon1?id=1" target=
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 

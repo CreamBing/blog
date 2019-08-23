@@ -421,7 +421,7 @@
 <p>类中的注释很好的说明了问题，另外调用时候的意义也更加明确</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//设置一个好吃的红苹果,直接将好吃和不好吃封装到了api里面，通过函数名字表示，用户就很难调用错误的方法</span><br><span class="line">Apple a1 = Apple.createRedDelicious();</span><br><span class="line">//我不得不传一个重量的参数，虽然 0g 的红苹果现实没意义，但是如果是其它可选参数了，另外第三个参数我们也有可能写错，到底是ture好吃，还是false好吃，我们不得不去看api</span><br><span class="line">Apple a2 = new Apple(Color.RED,0,Boolean.TRUE);</span><br></pre></td></tr></table></figure>
 <p>2.单例模式<br>
-这里可以看一下之前在读java编程思想-类的访问权限的时候所做的笔记:<strong><a href="/2019/01/13/java编程思想第四版第六章读书笔记/" title="java编程思想第四版第六章读书笔记">java编程思想第四版第六章读书笔记</a></strong><br>
+这里可以看一下之前在读java编程思想-类的访问权限的时候所做的笔记:<strong><a href="/blog/2019/01/13/java编程思想第四版第六章读书笔记/" title="java编程思想第四版第六章读书笔记">java编程思想第四版第六章读书笔记</a></strong><br>
 3.基于接口的框架<br>
 例如 jdk 中 java.util.Collections.java 类其中的很多方法就是返回类型是一个接口，其真正返回的是它的子类对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; Collection&lt;T&gt; unmodifiableCollection(Collection&lt;? extends T&gt; c) &#123;</span><br><span class="line">        return new UnmodifiableCollection&lt;&gt;(c);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -449,7 +449,7 @@ TODO:等我看了相关api再来记录</p>
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/blog/images/weixingongzhonghao.jpg" alt="Cream Bing wechat" style="width: 200px; max-width: 100%;">
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 
