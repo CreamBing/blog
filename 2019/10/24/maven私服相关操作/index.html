@@ -87,7 +87,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://creambing.github.io/blog/images/hexo/cherry.png">
 <meta property="og:image" content="https://creambing.github.io/blog/images/java/buildtools/maven/maven_deploy.png">
-<meta property="og:updated_time" content="2019-10-24T02:38:19.529Z">
+<meta property="og:updated_time" content="2019-10-24T08:19:02.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="maven私服相关操作">
 <meta name="twitter:image" content="https://creambing.github.io/blog/images/hexo/cherry.png">
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  72
+                  174
                 </span>
               
 
@@ -437,6 +437,8 @@
 <h4 id="上传开发包到私服"><a class="markdownIt-Anchor" href="#上传开发包到私服"></a> 上传开发包到私服</h4>
 <p>自己开发的 jar 包 package 后,通过以下命令上传到私服</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn deploy:deploy-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=1.0.0 -Dpackaging=jar -Dfile=C:\Users\Administrator\Downloads\Compressed\ojdbc-full\OJDBC-Full\ojdbc6.jar -Durl=http://172.20.1.100:8081/repository/3rdParty/ -DrepositoryId=3rdParty</span><br></pre></td></tr></table></figure>
+<p>上面没有指定pom文件,私服会默认生成一个空的pom文件,里面没有相关依赖,所以当你引用这个 jar 的时候,会发生某些他所依赖的类不存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn deploy:deploy-file -DgroupId=com.xuxueli -DartifactId=xxl-job-core -Dversion=1.9.1.RELEASE -Dpackaging=jar -Dfile=E:\DEV\xxl-job-core-1.9.1-SNAPSHOT.jar  -Durl=http://172.20.1.100:8081/repository/3rdParty/ -DrepositoryId=3rdParty -DpomFile=E:\DEV\pom.xml</span><br></pre></td></tr></table></figure>
 <img src="/blog/images/java/buildtools/maven/maven_deploy.png">
 <h1 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h1>
 
@@ -508,6 +510,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/10/31/图解java多线程-Single-Threaded-Execution-模式/" rel="prev" title="图解java多线程-Single_Threaded_Execution_模式">
+                图解java多线程-Single_Threaded_Execution_模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -591,7 +597,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -602,7 +608,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -613,7 +619,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -696,7 +702,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.3k</span>
+    <span title="Site words total count">77.3k</span>
   
 </div>
 
